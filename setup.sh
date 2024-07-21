@@ -6,7 +6,7 @@ YELLOW='\033[0;33m'
 CYAN='\e[36m'
 NC='\033[0m' # No Color
 
-apt-get update && apt install -y -q wget curl cron git
+apt-get update && apt install -y -q wget curl cron git psmisc
 clear
 echo -e "${RED} Cloning GoldenEye...${NC}"
 cd
@@ -26,7 +26,7 @@ echo -e "${RED} Setting up GoldenEye... ${NC}"
 cat > script.sh <<EOF
 #!/bin/bash
 
-pkill script.bash
+killall script.bash
 ./goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
 EOF
 
