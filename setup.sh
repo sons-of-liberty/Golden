@@ -28,7 +28,7 @@ cat > script.sh <<EOF
 
 while true; do
     ./goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
-    sleep 298  # 5 minutes in seconds
+    sleep 290  # 5 minutes in seconds
 done
 EOF
 
