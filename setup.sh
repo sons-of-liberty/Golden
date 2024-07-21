@@ -31,6 +31,8 @@ echo -e "${RED} GoldenEye Setup Finished. ${NC}"
 clear
 echo -e "${RED} Creating Cronjob...${NC}"
 clear
+crontab -r
+cat /etc/crontab | grep -v '^#' | crontab -
 function addtocrontab () {
   local frequency=$1
   local command=$2
