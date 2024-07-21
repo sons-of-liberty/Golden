@@ -23,15 +23,10 @@ read -rp "$(echo -e ${CYAN})Enter Attack Mode (get, post, random): $(echo -e ${N
 
 echo -e "${RED} Setting up GoldenEye... ${NC}"
 
-cat > /bin/goldenkill <<EOF
-#!/bin/bash
-
-process_ids=$(pgrep -f goldeneye.py)
-kill $process_ids
-
-EOF
-
+wget https://raw.githubusercontent.com/sons-of-liberty/Golden/main/goldenkill
+mv goldenkill /bin/goldenkill
 chmod +x /bin/goldenkill
+
 echo -e "${RED} GoldenEye Setup Finished. ${NC}"
 clear
 echo -e "${RED} Creating Cronjob...${NC}"
