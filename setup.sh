@@ -26,10 +26,8 @@ echo -e "${RED} Setting up GoldenEye... ${NC}"
 cat > script.sh <<EOF
 #!/bin/bash
 
-while true; do
-    ./goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
-    sleep 290  # 5 minutes in seconds
-done
+pkill script.bash
+./goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
 EOF
 
 chmod +x script.sh
