@@ -1,0 +1,4 @@
+#!/bin/bash
+
+process_ids=$(pgrep -f goldeneye.py)
+kill $process_ids
