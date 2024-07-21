@@ -3,8 +3,7 @@
 process_ids=$(pgrep -f goldeneye.py)
 
 if [ -z "$process_ids" ]; then
-    echo "No processes found for goldeneye.py"
+    :
 else
-    echo "Killing processes for goldeneye.py"
     kill $process_ids
 fi
